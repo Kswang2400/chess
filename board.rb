@@ -5,10 +5,12 @@ require 'colorize'
 require 'yaml'
 
 class Board
-  attr_accessor :squares
+  attr_accessor :squares, :selected_piece, :selected_sq
 
   def initialize
     @squares = Array.new(8) { Array.new(8) }
+    @selected_piece = nil
+    @selected_sq = [3,3]
     # @squares = YAML::load(File.read("init.yml"))  #See history.log
     set_new_game_positions
   end
@@ -56,6 +58,10 @@ class Board
   end
 
   def display_board
+    system("clear")
+    puts "\n\n\n"
+    highlight = selected_piece.valid_moves + selected_piece.pos if selected_piece
+
     @squares.each_with_index do |row, i|
       print (" " + (8 - i).to_s + " ").yellow.on_magenta
       print " "
@@ -63,7 +69,14 @@ class Board
         to_print = "   " if piece.nil?
         to_print =  " " + piece.display + " " unless piece.nil?
         to_print = piece && piece.color == :B ? to_print.black : to_print.red
-        print (i + j) % 2 == 1 ? to_print.on_blue : to_print.on_white
+        if highlight && highlight.include?([i, j])
+          to_print = (i + j) % 2 == 1 ? to_print.on_green : to_print.on_yellow
+        else
+          to_print = (i + j) % 2 == 1 ? to_print.on_blue : to_print.on_white
+        end
+        to_print = to_print.on_magenta if selected_sq == [i, j]
+
+        print to_print
       end
       puts ""
     end
@@ -74,12 +87,12 @@ class Board
     nil
   end
 
-  def in_check?(color)
-    king_pos = find_king_pos(color)
-    opponent_pieces = all_pieces(opp_color(color))
-    all_valid_moves = []
-    opponent_pieces.each { |piece| all_valid_moves += piece.valid_moves }
-  end
+  # def in_check?(color)
+  #   king_pos = find_king_pos(color)
+  #   opponent_pieces = all_pieces(opp_color(color))
+  #   all_valid_moves = []
+  #   opponent_pieces.each { |piece| all_valid_moves += piece.valid_moves }
+  # end
 
   def inspect
     nil
@@ -98,6 +111,7 @@ class Board
     piece = @squares[old_pos[0]][old_pos[1]]
     @squares[old_pos.first][old_pos.last] = nil
     @squares[new_pos.first][new_pos.last] = piece
+    self.selected_piece = nil
   end
 
   def square(pos)
