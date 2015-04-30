@@ -1,3 +1,4 @@
+
 require "io/console"
 
 class ChessInput

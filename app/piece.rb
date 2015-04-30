@@ -96,11 +96,14 @@ class King < SteppingPiece
 
   def valid_moves
     reg_moves = super
+
     if !has_moved
       opp_attacks = @board.all_pieces(@board.opp_color(color))
         .map    { |piece| piece.spaces_threatened }
         .inject(&:+)
+
       k_row = pos.first
+
       @board.all_pieces(color).select { |piece| piece.class == Rook }.each do |rook|
         case rook.pos
         when [k_row, 7]
@@ -110,11 +113,13 @@ class King < SteppingPiece
         else
           in_between = []
         end
+
         unless in_between.empty? || rook.has_moved ||
                in_between.any? { |p| board.square(p) } ||
                in_between.take(2).any? { |p| opp_attacks.include?(p) }
           reg_moves << in_between.first
         end
+
       end
     end
 
@@ -139,11 +144,6 @@ class King < SteppingPiece
 end
 
 class SlidingPiece < Piece
-  ######
-  def piece_moves
-
-    # self.class.deltas.map { |move| [pos[0] + move[0], pos[1] + move[1]]}
-  end
 
   def sliding_moves(deltas)
     all_moves = []
@@ -170,10 +170,6 @@ class SlidingPiece < Piece
   def bishop_moves
     sliding_moves( [[1, 1], [1, -1], [-1, 1], [-1,-1]] )
   end
-
-  # def sliding_moves(deltas)
-  #   deltas.each
-  # end
 end
 
 class Queen < SlidingPiece
@@ -217,7 +213,7 @@ class Pawn < Piece
   def display
     "♟"
   end
-  # 
+  #
   # def valid_moves
   #   reg_moves = super
   #
@@ -257,7 +253,6 @@ class Pawn < Piece
   end
 
   def make_move!(end_pos)
-    if pos[2]
     if end_pos[0] == (color == :B ? 7 : 0)
       @board.set_square(end_pos, Queen.new(end_pos, @board, color, true))
       @board.set_square(pos, nil)

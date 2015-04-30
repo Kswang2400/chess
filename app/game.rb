@@ -22,8 +22,8 @@ class Game
 
     until game_board.game_over?
       game_board.display_board(true)
-      feedback = game_board.player_turn == :W ? player1.get_move : player2.get_move
-
+      feedback = game_board.player_turn == :W ?
+        player1.get_move : player2.get_move
     end
   end
 
@@ -46,7 +46,7 @@ class Game
       # puts "  Welcome to ASCII Chess - Fireworks Edition  ".cyan
       print   "   Welcome to ASCII Chess - Fireworks Edition".cyan
       # puts "\n".on_black
-      puts File.read('logo.txt')
+      puts File.read('./ascii_art/logo.txt')
       puts "".on_black
       menu.each_with_index do |row, r|
         row.each_with_index { |item, i| menu[r][i] = item.on_black }

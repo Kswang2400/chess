@@ -1,4 +1,6 @@
+
 require_relative 'input.rb'
+
 require "io/console"
 
 class Player
@@ -69,6 +71,8 @@ class HumanPlayer < Player
     end
 
     if @board.game_over?
+      system("clear")
+      puts "\n\n\n\n\n\n\n\nCONGRATULATIONS!".green
       sleep(2)
       @board.win
     end

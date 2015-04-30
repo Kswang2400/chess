@@ -1,5 +1,5 @@
 
-require_relative 'piece.rb'
+require_relative './piece.rb'
 
 require 'byebug'
 require 'colorize'
@@ -56,10 +56,6 @@ class Board
     # File.open("init.yml", 'w') do |file|
     #   file.puts(@squares.to_yaml)
     # end
-  end
-
-  def display_ascii
-    #awesomeness
   end
 
   def display_board(clear = false)
@@ -148,6 +144,7 @@ class Board
         return [i, j] if piece && piece.is_a?(King) && piece.color == color
       end
     end
+
     raise ChessError "No #{:color} king found!"
   end
 
@@ -182,31 +179,31 @@ class Board
   def win
     start_time = Time.now
     until Time.now - start_time > 6
-      puts File.read("win_art_blank.txt").yellow
+      puts File.read("./ascii_art/win_art_blank.txt").yellow
       sleep(0.2)
       system('cls')
-      puts File.read("win_art_right1.txt").blue
+      puts File.read("./ascii_art/win_art_right1.txt").blue
       sleep(0.2)
       system('cls')
-      puts File.read("win_art_blank.txt").yellow
+      puts File.read("./ascii_art/win_art_blank.txt").yellow
       sleep(0.2)
       system('cls')
-      puts File.read("win_art_left.txt").red
+      puts File.read("./ascii_art/win_art_left.txt").red
       sleep(0.2)
       system('cls')
-      puts File.read("win_art_blank.txt").yellow
+      puts File.read("./ascii_art/win_art_blank.txt").yellow
       sleep(0.2)
       system('cls')
-      puts File.read("win_art_right2.txt").green
+      puts File.read("./ascii_art/win_art_right2.txt").green
       sleep(0.2)
       system('cls')
-      puts File.read("win_art_blank.txt").yellow
+      puts File.read("./ascii_art/win_art_blank.txt").yellow
       sleep(0.2)
       system('cls')
-      puts File.read("win_art_left.txt").magenta
+      puts File.read("./ascii_art/win_art_left.txt").magenta
       sleep(0.2)
       system('cls')
-      puts File.read("win_art_blank.txt").yellow
+      puts File.read("./ascii_art/win_art_blank.txt").yellow
     end
   end
 
