@@ -1,9 +1,11 @@
 
-require_relative './piece.rb'
 
+require 'require_all'
 require 'byebug'
 require 'colorize'
 require 'yaml'
+
+require_all 'pieces'
 
 class Board
   attr_accessor :squares, :selected_piece, :selected_sq

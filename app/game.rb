@@ -4,6 +4,7 @@ require_relative 'player.rb'
 require_relative 'board.rb'
 
 require 'colorize'
+require 'require_all'
 
 class Game
 
