@@ -5,22 +5,19 @@ module MainMenu
   def main_menu
     p1human = true
     p2human = true
-
-    selected = [2, 0]
     menu_done = false
+    selected = [2, 0]
 
     menu = [["  Player  ".cyan, " Computer "],
             ["  Player  ".cyan, " Computer "],
               ["    OK    ", "   Exit   "]]
-
+    
     until menu_done
-      render_main_menu(menu)
+      render_main_menu(menu, selected)
 
       menu.each_with_index do |row, r|
         row.each_with_index { |item, i| menu[r][i] = item.on_black }
       end
-
-      menu[selected[0]][selected[1]] = menu[selected[0]][selected[1]].on_yellow
 
       input = ChessInput.read_char
 
@@ -64,7 +61,8 @@ module MainMenu
     [p1human, p2human, continue]
   end
 
-  def render_main_menu(menu)
+  def render_main_menu(menu, selected)
+    menu[selected[0]][selected[1]] = menu[selected[0]][selected[1]].on_yellow
     system("clear")
     puts "\n\n\n".on_black
     print   "   Welcome to ASCII Chess - Fireworks Edition".cyan
