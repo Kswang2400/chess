@@ -1,11 +1,8 @@
 
-
 require 'require_all'
-require 'byebug'
-require 'colorize'
 require 'yaml'
 
-require_all 'pieces'
+require_all './app/pieces'
 
 class Board
   attr_accessor :squares, :selected_piece, :selected_sq
