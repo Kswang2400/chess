@@ -4,9 +4,11 @@ require 'require_all'
 
 require_all './app/pieces'
 require_relative 'displayable'
+require_relative 'checkable'
 
 class Board
   include Displayable
+  include Checkable
   attr_accessor :squares, :selected_piece, :selected_sq
   attr_accessor :white_name, :black_name
   attr_accessor :player_turn, :count
@@ -77,38 +79,9 @@ class Board
     dup_board
   end
 
-  def in_check?(color)
-    king_pos = find_king_pos(color)
-    opponent_pieces = all_pieces(opp_color(color))
-    opponent_pieces
-      .map { |piece| piece.spaces_threatened }
-      .inject(&:+)
-      .include?(king_pos)
-  end
-
-  def no_moves_left?(color)
-    all_pieces(color).map { |piece| piece.valid_moves }
-      .inject(&:+)
-      .empty?
-  end
-
   def game_over?
     checkmated?(:W) || checkmated?(:B)
     #add conditions for draw (stalemate)
-  end
-
-  def checkmated?(color)
-    no_moves_left?(color) && in_check?(color)
-  end
-
-  def find_king_pos(color)
-    @squares.each_with_index do |row, i|
-      row.each_with_index do |piece, j|
-        return [i, j] if piece && piece.is_a?(King) && piece.color == color
-      end
-    end
-
-    raise ChessError "No #{:color} king found!"
   end
 
   def update_square(old_pos, new_pos)
