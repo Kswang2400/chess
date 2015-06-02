@@ -3,8 +3,8 @@ require 'require_all'
 # require 'yaml'
 
 require_all './app/pieces'
-require_relative 'displayable'
-require_relative 'checkable'
+require './app/modules/displayable'
+require './app/modules/checkable'
 
 class Board
   include Displayable
@@ -81,7 +81,7 @@ class Board
 
   def game_over?
     checkmated?(:W) || checkmated?(:B)
-    #add conditions for draw (stalemate)
+    # add conditions for draw (stalemate)
   end
 
   def update_square(old_pos, new_pos)
@@ -103,31 +103,31 @@ class Board
   def win
     start_time = Time.now
     until Time.now - start_time > 6
-      puts File.read("./ascii_art/win_art_blank.txt").yellow
+      puts File.read("./app/ascii_art/win_art_blank.txt").yellow
       sleep(0.2)
       system('cls')
-      puts File.read("./ascii_art/win_art_right1.txt").blue
+      puts File.read("./app/ascii_art/win_art_right1.txt").blue
       sleep(0.2)
       system('cls')
-      puts File.read("./ascii_art/win_art_blank.txt").yellow
+      puts File.read("./app/ascii_art/win_art_blank.txt").yellow
       sleep(0.2)
       system('cls')
-      puts File.read("./ascii_art/win_art_left.txt").red
+      puts File.read("./app/ascii_art/win_art_left.txt").red
       sleep(0.2)
       system('cls')
-      puts File.read("./ascii_art/win_art_blank.txt").yellow
+      puts File.read("./app/ascii_art/win_art_blank.txt").yellow
       sleep(0.2)
       system('cls')
-      puts File.read("./ascii_art/win_art_right2.txt").green
+      puts File.read("./app/ascii_art/win_art_right2.txt").green
       sleep(0.2)
       system('cls')
-      puts File.read("./ascii_art/win_art_blank.txt").yellow
+      puts File.read("./app/ascii_art/win_art_blank.txt").yellow
       sleep(0.2)
       system('cls')
-      puts File.read("./ascii_art/win_art_left.txt").magenta
+      puts File.read("./app/ascii_art/win_art_left.txt").magenta
       sleep(0.2)
       system('cls')
-      puts File.read("./ascii_art/win_art_blank.txt").yellow
+      puts File.read("./app/ascii_art/win_art_blank.txt").yellow
     end
   end
 

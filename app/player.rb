@@ -1,6 +1,4 @@
 
-require_relative 'input.rb'
-
 require "io/console"
 
 class Player
@@ -19,9 +17,10 @@ end
 
 class ComputerPlayer < Player
   def get_move
-    sleep(rand(3) + 0.5)
-    piece = @board.all_pieces(@color).reject { |piece| piece.valid_moves.empty? }.sample
-    piece.make_move(piece.valid_moves.sample)
+    sleep(rand(3) + 0.5) # fake AI, hehe
+    random_piece = @board.all_pieces(@color).reject { |piece| piece.valid_moves.empty? }.sample
+    random_piece.make_move(random_piece.valid_moves.sample)
+
     nil
   end
 end
@@ -64,18 +63,19 @@ class HumanPlayer < Player
         when "\e"
           exit
         end
-        # board.display_board(true)
       end
     rescue ChessError => e
-      puts "here now"
+      puts e.messages
     end
 
     if @board.game_over?
+      sleep(2.5)
       system("clear")
       puts "\n\n\n\n\n\n\n\nCONGRATULATIONS!".green
       sleep(2)
       @board.win
     end
+
     nil
   end
 end

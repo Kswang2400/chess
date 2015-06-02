@@ -1,7 +1,7 @@
 
 require_relative 'input'
 
-module MainMenu
+module Menuable
   def main_menu
     p1human = true
     p2human = true

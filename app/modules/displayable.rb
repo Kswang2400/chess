@@ -43,7 +43,7 @@ module Displayable
     puts "   ".on_magenta
     print "    ".yellow.on_magenta
     puts " a  b  c  d  e  f  g  h ".yellow.on_magenta
-    # print_check_statments
+    print_check_statments
   end
 
   def print_check_statments

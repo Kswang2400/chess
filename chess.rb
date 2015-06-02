@@ -8,7 +8,7 @@ end
 
 # Notes
 
-# Need to refactor EVERYTHING
+# Need to refactor EVERYTHING (board, king_moves, piece)
 # Add screenshots for README
 # Save/Load from YAML
 

@@ -16,8 +16,6 @@ class Piece
 
   def make_move(end_pos)
     if valid_moves.include?(end_pos)
-      #dupe the board and make the move on the duped board
-      # unless duped_bboard.in_check(color)
       make_move!(end_pos)
       board.player_turn = board.opp_color(color)
       board.selected_piece = nil

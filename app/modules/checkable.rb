@@ -10,8 +10,6 @@ module Checkable
         return [i, j] if piece && piece.is_a?(King) && piece.color == color
       end
     end
-
-    raise ChessError "No #{:color} king found!"
   end
 
   def in_check?(color)

@@ -1,12 +1,12 @@
 
-require_relative 'player'
-require_relative 'board'
-require_relative 'main_menu'
+require './app/player'
+require './app/board'
+require './app/modules/menuable'
 
 require 'colorize'
 
 class Game
-  include MainMenu
+  include Menuable
   attr_accessor :game_board
   attr_reader :player1, :player2
 
@@ -33,7 +33,7 @@ class Game
                               ComputerPlayer.new("Magnus 128K", :W, @game_board)
     @player2 = h_players[1] ? HumanPlayer.new(:B, @game_board) :
                               ComputerPlayer.new("Deep Red Ruby", :B, @game_board)
-                              
+
     @game_board.white_name = player1.name
     @game_board.black_name = player2.name
   end

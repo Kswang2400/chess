@@ -1,5 +1,5 @@
 
-require_relative 'piece.rb'
+require_relative './piece'
 
 class King < SteppingPiece
   def self.deltas
@@ -20,6 +20,7 @@ class King < SteppingPiece
 
       k_row = pos.first
 
+      # refactor into castle_moves (breaks checkmate)
       @board.all_pieces(color).select { |piece| piece.class == Rook }.each do |rook|
         case rook.pos
         when [k_row, 7]
@@ -35,7 +36,6 @@ class King < SteppingPiece
                in_between.take(2).any? { |p| opp_attacks.include?(p) }
           reg_moves << in_between.first
         end
-
       end
     end
 
