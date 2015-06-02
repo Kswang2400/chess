@@ -1,7 +1,7 @@
 
-require './app/player'
-require './app/board'
-require './app/modules/menuable'
+require './game/player'
+require './game/board'
+require './game/modules/menuable'
 
 require 'colorize'
 

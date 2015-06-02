@@ -1,5 +1,5 @@
 
-require './app/game'
+require './game/game'
 
 if __FILE__ == $PROGRAM_NAME
   game = Game.new
@@ -11,4 +11,3 @@ end
 # Need to refactor EVERYTHING (board, king_moves, piece)
 # Add screenshots for README
 # Save/Load from YAML
-

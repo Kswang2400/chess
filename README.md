@@ -8,6 +8,6 @@ Play Chess against the computer, or challenge a friend!
 
 Good Luck!
 
-https://github.com/appacademy/ruby-curriculum/blob/master/projects/w2d2-chess/w2d2-chess.md
+https://github.com/gameacademy/ruby-curriculum/blob/master/projects/w2d2-chess/w2d2-chess.md
 
 ##Screenshots
