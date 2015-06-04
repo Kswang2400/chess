@@ -18,4 +18,4 @@ https://github.com/gameacademy/ruby-curriculum/blob/master/projects/w2d2-chess/w
 
 ####Castling!
 <img src=./game/screenshots/castle.png 
-  align=middle width=500 height=400 />
+  align=middle width=400 height=400 />
