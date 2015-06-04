@@ -7,28 +7,28 @@ class Pawn < Piece
 
   def initialize(pos, board, color, has_moved = false)
     super
-    just_moved_two = false
+    @just_moved_two = false
   end
 
   def display
     "♟"
   end
-  #
-  # def valid_moves
-  #   reg_moves = super
-  #
-  #   if pos[0] == (color == :W ? 3 : 4)
-  #     adjacent_pcs = [ @board.square([pos[0], pos[1] + 1]),
-  #                      @board.square([pos[0], pos[1] - 1]) ]
-  #     adjacent_pcs.each do |piece|
-  #       if piece && piece.class == Pawn && piece.just_moved_two
-  #         reg_moves << [pos[0] + color == :W  ? (-1) : (1), piece.pos[1]]
-  #       end
-  #     end
-  #   end
-  #
-  #   reg_moves
-  # end
+  
+  def valid_moves
+    reg_moves = super
+  
+    if pos[0] == (color == :W ? 3 : 4)
+      adjacent_pcs = [ @board.square([pos[0], pos[1] + 1]),
+                       @board.square([pos[0], pos[1] - 1]) ]
+      adjacent_pcs.each do |piece|
+        if piece && piece.class == Pawn && piece.just_moved_two
+          reg_moves << [pos[0] + color == :W  ? (-1) : (1), piece.pos[1]]
+        end
+      end
+    end
+  
+    reg_moves
+  end
 
   def piece_moves
     all_moves = []

@@ -31,7 +31,7 @@ class Piece
     self.pos = end_pos
     self.has_moved = true
 
-    #remove en passant possibilities
+    # remove en passant possibilities
     (board.all_pieces(:B) + board.all_pieces(:W))
       .select { |piece| piece.class == Pawn }
       .each   { |pawn|  pawn.just_moved_two = false }
