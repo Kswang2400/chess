@@ -13,9 +13,9 @@ https://github.com/gameacademy/ruby-curriculum/blob/master/projects/w2d2-chess/w
 ##Screenshots
 
 ####Main Menu
-<img src=./app/screenshots/main_menu.png 
+<img src=./game/screenshots/main_menu.png 
   align=middle width=500 height=400 />
 
 ####Castling!
-<img src=./app/screenshots/castle.png 
+<img src=./game/screenshots/castle.png 
   align=middle width=500 height=400 />
