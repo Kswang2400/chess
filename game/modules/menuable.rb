@@ -66,7 +66,7 @@ module Menuable
     system("clear")
     puts "\n\n\n".on_black
     print   "   Welcome to ASCII Chess - Fireworks Edition".cyan
-    puts File.read('./app/ascii_art/logo.txt')
+    puts File.read('./game/ascii_art/logo.txt')
     puts "".on_black
     print "            #{"  White: ".red.on_white}  #{menu[0][0]}   #{menu[0][1]}\n"
     print "            #{"  Black: ".black.on_white}  #{menu[1][0]}   #{menu[1][1]}\n\n"
